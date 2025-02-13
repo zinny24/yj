@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX를 이용하여 Map객체 데이터 표시하기</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+        <h3 id="user-info"></h3>
+        <button onclick="getUserInfo()">사용자 정보를 가져옵니다.</button>
+        <br><br>
+
+        <select id="city"></select>
+        <button onclick="getCity()">지역정보를 가져옵니다.</button>
+
+    <script>
+        function getCity() {
+            $.get("/getCity", function( result ) {
+
+                result.forEach( function(loc) {
+                    $("#city").append("<option>"+loc+"</option>");
+                } );
+
+            } );
+        }
+
+        function getUserInfo() {
+            $.get("/exData4", function( result ) {
+                $("#user-info")
+                .text("아이디 : "+result.userid+", 비밀번호 : " + result.passwd);
+            });
+        }
+    </script>
+</body>
+</html>

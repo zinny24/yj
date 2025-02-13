@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX를 이용해서 데이터 가져온 후 html 태그에 표시하기</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <p></p>
+    <button onclick="fetchMessage()">메시지 가져오기</button>
+
+    <script>
+        function fetchMessage() {
+            $.get("/exData2", function( data ){
+                $("p").text(data);
+            });
+        }
+    </script>
+</body>
+</html>
