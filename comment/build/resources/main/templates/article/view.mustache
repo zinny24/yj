@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>방명록 상세보기</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h2>방명록 상세보기</h2>
+    <div style="padding:10px">
+
+        <div id="article-box">
+            <span>게시물 번호 : {{article.id}}</span><br>
+            <h4>게시물 제목 : {{article.subject}}</h4>
+            <span>
+                작성자 : {{article.writer}},
+                작성일 : {{article.createDate}}</span><br>
+            <p>게시물 내용</p>
+            <p>{{article.content}}</p>
+
+            <a href="/article/list">목록</a> / <a href="/article/write">방명록 작성</a>
+
+        </div>
+
+        <hr style="margin: 10px 0" />
+
+        <div id="comment-box">
+            <h3 style="margin-top:20px">댓글 목록</h3>
+            <div id="comment-">
+                <p>
+                    <strong>작성자</strong> : 내용
+                    <button>삭제</button>
+                </p>
+            </div>
+            <hr style="margin: 20px" />
+        </div>
+
+        <form id="comment-form">
+            <input type="text" id="writer" required placeholder="작성자">
+            <textarea id="content" placeholder="댓글입력" required></textarea>
+            <button type="submit">댓글작성</button>
+        </form>
+    </div>
+
+    <script>
+
+        $(document).ready(  function() {
+
+            //1. 목록
+
+
+            //2. 저장
+            $("#comment-form").submit( function(e) {
+                e.preventDefault();
+                let articleId   = {{article.id}};
+                let writer      = $("#writer").val();
+                let content     = $("#content").val();
+
+                $.ajax( {
+                    url : "/v4/comment/save",
+                    type : "post",
+                    data : JSON.stringify( { writer, content, articleId } ),
+                    contentType : "application/json",
+                    success : function() {},
+                    error : function(err) {
+                        console.log("에러 : ", err);
+                    }
+                } );
+            }  );
+
+
+            //3. 삭제
+
+        }  );
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
