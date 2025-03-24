@@ -1,0 +1,25 @@
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
+const DetailPage = () => {
+  const location = useLocation();
+  
+  // 쿼리 파라미터를 파싱
+  const params = new URLSearchParams(location.search);
+  const mode = params.get('mode'); // 'hidden' 값 확인
+
+  return (
+    <div>
+      <h1>Page Title</h1>
+      
+      {/* mode가 hidden이면 이미지 숨기기 */}
+      {mode !== 'hidden' && (
+        <img src="main-image.jpg" alt="Main" />
+      )}
+      
+      <p>Page content goes here...</p>
+    </div>
+  );
+};
+
+export default DetailPage;
