@@ -1,0 +1,14 @@
+conda create --name myapp python=3.9
+
+
+conda activate myapp
+
+
+
+conda install numpy pandas scikit-learn folium matplotlib seaborn streamlit  jupyterlab
+
+
+pip install tensorflow xgboost imbalanced-learn
+
+
+python -c "import numpy, pandas, sklearn, folium, tensorflow, xgboost, matplotlib, seaborn, streamlit, jupyterlab; print('All packages are installed!')"
