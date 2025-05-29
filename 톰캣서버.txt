@@ -10,7 +10,7 @@ tomcat.apache.org : 설치, 압축해제 방식
 
 다운로드 한 groupware9 를 이클립스에 import
 
-cretae database groupware9
+create database groupware9
 - tables.sql을 groupware9 데이터베이스에 집어 넣기
 - 만들어 진 테이블에 데이터 집어 넣기 tableData.sql
 
